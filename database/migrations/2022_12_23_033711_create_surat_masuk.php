@@ -19,7 +19,7 @@ class CreateSuratMasuk extends Migration
             $table->string('pengirim');
             $table->string('agenda');
             $table->string('perihal');
-            $table->string('tgl_surat');
+            $table->date('tgl_surat');
             $table->boolean('approved');
             $table->timestamps();
         });
