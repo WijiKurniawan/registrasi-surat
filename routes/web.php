@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SuratKeluarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/master', function () {
     return view('master');
+});
+
+Route::get('/lihatsuratkeluar', function () {
+    return view('suratkeluar.index');
+});
+
+Route::get('/buatsuratkeluar', function () {
+    return view('suratkeluar.create');
+});
+
+Route::resource('suratkeluar', SuratKeluarController::class);
+
+Route::get('/download/{file}', [SuratKeluarController::class, 'download']);
+
+Route::get('/showsuratkeluar', function () {
+    return view('suratkeluar.show');
 });

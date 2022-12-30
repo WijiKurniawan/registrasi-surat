@@ -19,7 +19,8 @@ class CreateSuratKeluar extends Migration
             $table->string('penerima');
             $table->string('agenda');
             $table->string('perihal');
-            $table->string('tgl_surat');
+            $table->date('tgl_surat');
+            $table->string('dokumen');
             $table->timestamps();
         });
     }

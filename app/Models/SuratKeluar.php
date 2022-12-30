@@ -12,6 +12,7 @@ class SuratKeluar extends Model
     protected $fillable = [
     'nomor_surat',
     'penerima',
+    'dokumen',
     'agenda',
     'perihal',
     'tgl_surat',
