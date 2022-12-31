@@ -19,8 +19,12 @@ class CreateSuratMasuk extends Migration
             $table->string('pengirim');
             $table->string('agenda');
             $table->string('perihal');
-            $table->date('tgl_surat');
-            $table->boolean('approved');
+            $table->date('tgl_surat_masuk');
+            $table->string('disposisi');
+            $table->string('perintah');
+            $table->string('catatan_KSOP');
+            $table->string('catatan');
+            $table->string('dokumen');
             $table->timestamps();
         });
     }

@@ -14,7 +14,11 @@ class SuratMasuk extends Model
     'pengirim',
     'agenda',
     'perihal',
-    'tgl_surat',
-    'approved',
+    'tgl_surat_masuk',
+    'disposisi',
+    'perintah',
+    'catatan_KSOP',
+    'catatan',
+    'dokumen',
     ];
 }

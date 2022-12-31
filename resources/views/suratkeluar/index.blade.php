@@ -1,15 +1,32 @@
 @extends('master')
 
 @section('title', 'Surat Keluar')
+@section('css')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+@endsection
 
 @section('content')
     <div class="mb-3">
         <a type="button" class="btn btn-primary btn-sm" href="{{ url('/buatsuratkeluar') }}">Tambah</a>
         {{-- <a type="button" class="btn btn-primary btn-sm">Tambah</a> --}}
+
+    </div>
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-side">
+                    <i class="fas fa-search fa-fw"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="col-md">
-        <table class="table ">
+        <table class="table " id="myTable">
             <thead class="thead-light">
                 <th>No</th>
                 <th>Nomor surat</th>
@@ -102,3 +119,11 @@
         })
     </script>
 @endsection
+@push('scripts')
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+@endpush

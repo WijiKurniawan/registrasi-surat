@@ -78,7 +78,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="../widgets.html" class="nav-link">
+                            <a href="{{ url('/suratmasuk') }}" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Surat Masuk
@@ -178,10 +178,9 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('vendors/dist/js/adminlte.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
-
     {{-- date --}}
     <script></script>
-    @stack('scripts1')
+    @stack('scripts')
 </body>
 
 </html>

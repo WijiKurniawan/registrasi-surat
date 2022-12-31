@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label>Tanggal Bergabung :</label>
+                <label>Tanggal Surat</label>
 
                 <div class="input-group">
                     <div class="input-group-prepend">
