@@ -19,6 +19,7 @@ class SuratMasuk extends Model
     'perintah',
     'catatan_KSOP',
     'catatan',
+    'status',
     'dokumen',
     ];
 }

@@ -21,7 +21,7 @@
                         <label>Lihat Dokumen surat</label>
                     </div>
                     <div class="col-8">
-                        <a href="{{ asset('/storage/dokumen/' . $item->dokumen) }}" target="_blank">{{ $item->dokumen }}
+                        <a href="{{ asset('/dokumen/suratkeluar/' . $item->dokumen) }}" target="_blank">{{ $item->dokumen }}
                         </a>
                     </div>
                 </div><br>

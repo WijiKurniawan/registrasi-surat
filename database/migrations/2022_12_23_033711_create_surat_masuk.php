@@ -15,16 +15,17 @@ class CreateSuratMasuk extends Migration
     {
         Schema::create('surat_masuk', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_surat');
-            $table->string('pengirim');
-            $table->string('agenda');
-            $table->string('perihal');
+            $table->string('nomor_surat_masuk');
+            $table->string('pengirim_masuk');
+            $table->string('agenda_masuk');
+            $table->string('perihal_masuk');
             $table->date('tgl_surat_masuk');
             $table->string('disposisi');
             $table->string('perintah');
             $table->string('catatan_KSOP');
             $table->string('catatan');
-            $table->string('dokumen');
+            $table->string('dokumen_masuk');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class SuratKeluarController extends Controller
         //
         $suratkeluar = SuratKeluar::all();
         $data = compact('suratkeluar');
+        $data['title'] = 'Surat Keluar';
         return view('suratkeluar.index', $data);
     }
 
@@ -27,7 +28,8 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view ('suratkeluar.create');
+        $data['title'] = 'Surat Keluar';
+        return view ('suratkeluar.create', $data);
     }
 
     /**
@@ -50,7 +52,7 @@ class SuratKeluarController extends Controller
         // dd($data);
         $ext = $request->dokumen->getClientOriginalExtension();
         $file = "surat_keluar-".time().".".$ext;
-        $request->dokumen->storeAs('public/dokumen', $file);
+        $request->dokumen->move(public_path('/dokumen/suratkeluar'),$file);
 
         $simpan = new SuratKeluar();
         $simpan -> nomor_surat = $validasi['nomor_surat'];
@@ -81,13 +83,11 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(SuratKeluar $suratkeluar)
+    public function edit($id)
     {
-        // dd($suratkeluar);
-        return view('suratkeluar.edit')->with('suratkeluar', $suratkeluar);
-
-        // $data = compact('suratkeluar');
-        // return view('suratkeluar.edit', $data);
+        $data['title'] = 'Surat Keluar';
+        $suratkeluar = SuratKeluar::find($id);
+        return view('suratkeluar.edit', ['suratkeluar'=>$suratkeluar], $data);
     }
 
     /**
@@ -99,11 +99,8 @@ class SuratKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // dd($id);
         $data = $request->all();
         $suratKeluar = SuratKeluar::find($id);
-        // dd($data);
         $data = $request->validate([
             'nomor_surat' => 'required',
             'penerima' => 'required',
@@ -113,9 +110,6 @@ class SuratKeluarController extends Controller
             'dokumen' => 'mimes:pdf,jpg,png|max:10000'
         ]);
 
-
-        // dd($simpan);
-        // dd($data);
         if ($request->has('dokumen')){
             $ext = $request->dokumen->getClientOriginalExtension();
             $editFile = "surat_keluar-".time().".".$ext;
@@ -138,9 +132,8 @@ class SuratKeluarController extends Controller
                 'tgl_surat' => $data['tgl_surat'],
             ]);
         }
-        // SuratKeluar::where('id', $id)->update($data);
-        $request->session()->flash('info', 'Data Surat Keluar berhasil di ubah');
-        return redirect()->route('suratkeluar.index');
+        
+        return redirect()->route('suratkeluar');
     }
 
     /**
@@ -149,14 +142,14 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SuratKeluar $suratkeluar)
+    public function destroy($id)
     {
-        // $this->authorize('delete', SuratKeluar::class);
+        $suratkeluar = SuratKeluar::find($id);
         $suratkeluar->delete();
-        return redirect()->route('suratkeluar.index');
+        return redirect()->route('suratkeluar');
     }
 
     public function download(Request $request, $file){
-        return response()->download(public_path('storage/dokumen/'.$file));
+        return response()->download(public_path('dokumen/suratkeluar/'.$file));
     }
 }

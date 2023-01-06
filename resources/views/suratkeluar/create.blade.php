@@ -1,8 +1,11 @@
-@extends('master')
-
-@section('title', 'Buat Surat Keluar')
+@extends('layout.app')
 
 @section('content')
+<div class="card">
+    <div class="card-header">
+        <b>Tambah Surat</b>
+    </div>
+    <div class="card-body">
     <form action="{{ route('suratkeluar.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
@@ -30,19 +33,9 @@
             <label for="exampleInputtext1">Perihal</label>
             <input type="text" class="form-control" id="perihal-keluar" placeholder="" required name="perihal">
         </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label>Tanggal Surat</label>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                    </div>
-                    <input type="date" class="form-control" data-inputmask-inputformat="yy/mm/dd" data-mask required
-                        name="tgl_surat">
-                </div>
-                <!-- /.input group -->
-            </div>
+        <div class="form-group">
+            <label for="exampleInputtext1">Tanggal Surat</label>
+            <input type="date" class="form-control" id="tgl-surat" placeholder="" required name="tgl_surat">
         </div>
 
 
@@ -50,8 +43,11 @@
             <label for="dokumen">Upload file surat</label>
             <input type="file" name="dokumen" class="form-control">
         </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" style="width: 150px"><i class="fas fa-plus"></i> Tambah Surat</button>
+        </div>
     </form>
+</div>
+</div>
 
 @endsection

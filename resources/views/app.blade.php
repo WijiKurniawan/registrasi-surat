@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrasi Surat</title>
+    <title>KSOP | {{ $title }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/dist/css/adminlte.min.css') }}">
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('vendors/plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -37,48 +38,50 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item">
+                    <span class="nav-link">Selamat Datang, <b> {{ Auth::user()->nama }}</b></span>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-sm btn-danger" href={{ route('logout') }}><i class="fas fa-power-off"></i>
+                        Keluar</a>
+                </li>
+            </ul>
         </nav>
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
+            <b href="../../index3.html" class="brand-link">
                 <img src="{{ asset('../../vendors/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">KSOP</span>
-            </a>
+                <span class="brand-text text-white">KSOP</span>
+            </b>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{ asset('../../vendors/dist/img/user2-160x160.jpg') }}"
-                            class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+              <?php $jabatan = Auth::user()->jabatan; ?>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        
+                        <li class="nav-item ">
+                            <a href="{{ url('/dashboard') }}"
+                                class="nav-link {{ $title == 'Dashboard' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                    <!-- <span class="right badge badge-danger">New</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
-                            <a href="{{ url('/suratmasuk') }}" class="nav-link">
+                            <a href="{{ url('/suratmasuk') }}"
+                                class="nav-link {{ $title == 'Surat Masuk' ? 'active' : '' }}">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Surat Masuk
@@ -86,15 +89,28 @@
                                 </p>
                             </a>
                         </li>
+                        @if($jabatan == 'ARSIPARIS')
                         <li class="nav-item">
-                            <a href="{{ url('/suratkeluar') }}" class="nav-link">
-                                <i class="nav-icon far fa-envelope"></i>
+                            <a href="{{ url('/suratkeluar') }}"
+                                class="nav-link {{ $title == 'Surat Keluar' ? 'active' : '' }}">
+                                <i class="nav-icon far fa-paper-plane"></i>
                                 <p>
                                     Surat Keluar
                                     <!-- <span class="right badge badge-danger">New</span> -->
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/manajemenakun') }}"
+                                class="nav-link {{ $title == 'Manajemen Akun' ? 'active' : '' }}">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    Manajemen Akun
+                                    <!-- <span class="right badge badge-danger">New</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        @endif
 
                     </ul>
                 </nav>
@@ -110,13 +126,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>@yield('title')</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item">Home</li>
-                                <li class="breadcrumb-item active">@yield('title')</li>
-                            </ol>
+                            <h1>{{ $title }}</h1>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -136,7 +146,8 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2022-2023 <a href="">KSOP</a>.</strong> All rights
+            <strong>Copyright &copy; 2022-2023 <a href="" class="text-decoration-none">KSOP</a>.</strong> All
+            rights
             reserved.
         </footer>
 
@@ -178,6 +189,19 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('vendors/dist/js/adminlte.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+    <script src={{ asset('vendors/plugins/datatables/jquery.dataTables.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/jszip/jszip.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/pdfmake/pdfmake.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/pdfmake/vfs_fonts.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-buttons/js/buttons.html5.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-buttons/js/buttons.print.min.js') }}></script>
+    <script src={{ asset('vendors/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
     {{-- date --}}
     <script></script>
     @stack('scripts')

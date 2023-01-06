@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.app')
 
 @section('title', 'Surat Keluar')
 @section('css')
@@ -6,71 +6,57 @@
 @endsection
 
 @section('content')
-    <div class="mb-3">
-        <a type="button" class="btn btn-primary btn-sm" href="{{ url('/buatsuratkeluar') }}">Tambah</a>
+<div class="card p-2" style="font-size: 12px">
+
+    <div class="m-2 d-flex justify-content-end">
+        <a type="button" class="btn btn-primary btn-sm" href="{{ url('/buatsuratkeluar') }}"><i class="fas fa-plus"></i> Tambah</a>
         {{-- <a type="button" class="btn btn-primary btn-sm">Tambah</a> --}}
 
     </div>
 
 
     <!-- SidebarSearch Form -->
-    <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-side">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <div class="col-md">
-        <table class="table " id="myTable">
+        <table class="table text-center" id="myTable" style="font-size: 12px">
             <thead class="thead-light">
-                <th>No</th>
-                <th>Nomor surat</th>
-                <th>Penerima</th>
-                <th>Agenda</th>
-                <th>Perihal</th>
-                <th>Tanggal Surat </th>
-                <th> Waktu Masuk </th>
-                <th>Action</th>
+                <th class="align-middle">No</th>
+                <th class="align-middle">Nomor surat</th>
+                <th class="align-middle">Penerima</th>
+                <th class="align-middle">Agenda</th>
+                <th class="align-middle">Perihal</th>
+                <th class="align-middle">Tanggal Surat </th>
+                <th class="align-middle"> Waktu Masuk </th>
+                <th class="align-middle">Action</th>
             </thead>
             <tbody>
                 @foreach ($suratkeluar as $index => $item)
                     @include('suratkeluar.show')
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->nomor_surat }}</td>
-                        <td>{{ $item->penerima }}</td>
-                        <td>{{ $item->agenda }}</td>
-                        <td>{{ $item->perihal }}</td>
-                        <td>{{ $item->tgl_surat }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>
-                            <div class="row-col-md-3">
-                                <a type="button" class="btn btn-primary mx-1" data-toggle="modal"
-                                    data-target="#exampleModal-{{ $item->id }}">
-                                    Lihat
+                        <td class="align-middle">{{ $index + 1 }}</td>
+                        <td class="align-middle">{{ $item->nomor_surat }}</td>
+                        <td class="align-middle">{{ $item->penerima }}</td>
+                        <td class="align-middle">{{ $item->agenda }}</td>
+                        <td class="align-middle">{{ $item->perihal }}</td>
+                        <td class="align-middle">{{ $item->tgl_surat }}</td>
+                        <td class="align-middle">{{ $item->created_at }}</td>
+                        <td class="align-middle">
+                            <div class="row-col-md-3 d-flex align-items-center justify-content-center" style="font-size: 12px">
+                                <a type="button" class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal-{{ $item->id }}">
+                                    <i class="fas fa-eye"></i>
                                 </a>
-
-                                <a class="btn btn-warning m-1" href="{{ url('suratkeluar/' . $item->id . '/edit') }}">
-                                    </i> Ubah
+                                <a class="text-white btn btn-warning btn-sm mx-1" href="{{ route('suratkeluar.edit', $item->id) }}">
+                                    <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="btn btn-sm btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                    data-toggle="modal" data-target="#deleteModal">Hapus</button>
-                                <a class="btn btn-info m-1" href="{{ url('/download', $item->dokumen) }}" download>
-                                    <i class="fas fa-download"></i> Unduh
+                                <form action="{{ route('suratkeluar.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DElETE')
+                                    <button class="btn btn-danger btn-sm mx-1" type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
+                                <a class="btn btn-primary btn-sm text-white" href="{{ route('suratkeluar.download', $item->dokumen) }}">
+                                    <i class="fas fa-download"></i>
                                 </a>
                             </div>
-                            {{-- <div class="row-col-md-3">
-                            <a class="btn btn-danger m-1" href="" onclick="return confirm('Apakah anda yakin untuk menghapus arsip ini?')">
-                                <i class="fas fa-trash"></i> Hapus
-                            </a>
-                              <a class="btn btn-info m-1" href="" download>
-                                <i class="fas fa-download"></i> Unduh</a>
-                        </div> --}}
                         </td>
                     </tr>
                 @endforeach
@@ -102,6 +88,7 @@
         </div>
 
     </div>
+</div>
     <script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script>
     <script>
         //generate alamat url untuk hapus data program sudi
