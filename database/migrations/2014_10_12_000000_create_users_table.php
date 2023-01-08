@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('nik')->uniqie();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->enum('jabatan', ['ARSIPARIS', 'KASUB BAG. TATA USAHA', 'KASIE LALA DAN USAHA KEPELABUHAN', 'KASIE KESELAMATAN BERLAYAR PENJAGAAN DAN PATROLI',  'KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI
-            KAPAL', 'KEPALA KSOP']);
+            $table->enum('jabatan', ['ARSIPARIS', 'KASUB BAG. TATA USAHA', 'KASIE LALA DAN USAHA KEPELABUHAN', 'KASIE KESELAMATAN BERLAYAR PENJAGAAN DAN PATROLI',  'KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI KAPAL', 'KEPALA KSOP']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
