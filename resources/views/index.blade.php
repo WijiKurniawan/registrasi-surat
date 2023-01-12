@@ -80,10 +80,10 @@
                                 <td class="align-middle">{{ $item->tgl_surat_masuk }}</td>
                                 @if ($item->status == 'Menunggu Tindakan')
                                     <td class="align-middle"><span class="badge bg-warning"> {{ $item->status }}</span></td>
-                                @elseif($item->status == 'Sedang Diproses')
+                                @elseif($item->status == 'Sudah Disposisi')
                                     <td class="align-middle"><span class="badge bg-success"> {{ $item->status }}</span>
                                     </td>
-                                @elseif($item->status == 'Disetujui')
+                                @elseif($item->status == 'Proses Disposisi')
                                     <td class="align-middle"><span class="badge bg-info"> {{ $item->status }}</span>
                                     </td>
                                 @elseif($item->status == 'Tidak Disetujui')

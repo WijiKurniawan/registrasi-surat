@@ -24,7 +24,7 @@ class SuratMasukController extends Controller
         } elseif ($jabatan == 'KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI KAPAL') {
             $suratmasuk = SuratMasuk::where('disposisi', 'Like', '%KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI KAPAL%')->get();
         } elseif ($jabatan == 'KEPALA KSOP') {
-            $suratmasuk = SuratMasuk::where('status','=', 'Sedang Diproses')->orWhere('status','=', 'Disetujui')->get();
+            $suratmasuk = SuratMasuk::where('status','=', 'Sudah Disposisi')->orWhere('status','=', 'Proses Disposisi')->get();
         } else {
             $suratmasuk = SuratMasuk::all();
         }

@@ -54,7 +54,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" href="{{ asset('/dokumen/suratkeluar/' . $item->dokumen) }}" target="_blank"><i class="fas fa-print"></i></a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@
                         name="perihal_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
                         value="{{ $suratmasuk->perihal_masuk }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="padding-right: 980px">
                     <label for="exampleInputtext1">Tanggal Surat</label>
                     <input type="date" class="form-control" id="perihal-keluar" placeholder="" required
                         name="tgl_surat_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
@@ -51,9 +51,9 @@
                 </div>
                 @if ($jabatan == 'KASUB BAG. TATA USAHA')
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1" value="Disetujui">
+                        <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1" value="Proses Disposisi">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            Disetujui
+                            Lanjut Disposisi
                         </label>
                     </div>
                     <div class="form-check">
@@ -162,7 +162,7 @@
                         <label>Catatan Kepala KSOP</label>
                         <textarea name="catatan_KSOP" class="form-control" rows="3" placeholder="Enter ..."
                             @if ($jabatan != 'KEPALA KSOP') readonly @endif></textarea>
-                        <input type="text" class="form-control" name="status" hidden value="Sedang Diproses">
+                        <input type="text" class="form-control" name="status" hidden value="Sudah Disposisi">
                     </div>
                 @endif
                 @if ($jabatan != 'KEPALA KSOP')

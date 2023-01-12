@@ -33,7 +33,7 @@ class HomeController extends Controller
             $suratmasuk = SuratMasuk::where('disposisi', 'Like', '%KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI KAPAL%')->get();
             $countmasuk = $suratmasuk->count();
         } elseif ($jabatan == 'KEPALA KSOP') {
-            $suratmasuk = SuratMasuk::where('status','=', 'Sedang Diproses')->orWhere('status','=', 'Disetujui')->get();
+            $suratmasuk = SuratMasuk::where('status','=', 'Sudah Disposisi')->orWhere('status','=', 'Proses Disposisi')->get();
             $countmasuk = $suratmasuk->count();
         } else {
             $suratmasuk = SuratMasuk::all();

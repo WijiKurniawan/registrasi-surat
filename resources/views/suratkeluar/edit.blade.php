@@ -40,7 +40,7 @@
             <input type="text" class="form-control" id="perihal-keluar" value="{{ $suratkeluar->perihal }}"
                 placeholder="" required name="perihal">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="padding-right: 980px">
             <label for="exampleInputtext1">Tanggal Surat</label>
             <input type="date" class="form-control" id="tgl-surat" placeholder="" required name="tgl_surat" value="{{ $suratkeluar->tgl_surat }}">
         </div>
