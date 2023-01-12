@@ -124,7 +124,22 @@ class SuratMasukController extends Controller
         $data = $request->all();
         $suratmasuk = SuratMasuk::find($id);
 
-        if ($jabatan == 'KEPALA KSOP') {
+        if($jabatan == 'ARSIPARIS'){
+            $data = $request->validate([
+                'nomor_surat_masuk' => 'required',
+                'pengirim_masuk' => 'required',
+                'agenda_masuk' => 'required',
+                'perihal_masuk' => 'required',
+                'tgl_surat_masuk' => 'required'
+            ]);
+            $suratmasuk->update([
+                'nomor_surat_masuk' => $data['nomor_surat_masuk'],
+                'pengirim_masuk' => $data['pengirim_masuk'],
+                'agenda_masuk' => $data['agenda_masuk'],
+                'perihal_masuk' => $data['perihal_masuk'],
+                'tgl_surat_masuk' => $data['tgl_surat_masuk']
+            ]);
+        }elseif ($jabatan == 'KEPALA KSOP') {
             $data = $request->validate([
                 'nomor_surat_masuk' => 'required',
                 'pengirim_masuk' => 'required',

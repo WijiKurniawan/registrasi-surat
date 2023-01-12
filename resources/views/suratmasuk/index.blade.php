@@ -75,6 +75,9 @@
                                 </a>
                                 @endif
                                 @if($jabatan == 'ARSIPARIS')
+                                <a class="text-white btn btn-warning btn-sm" href="{{ route('suratmasuk.edit', $item->id) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                 <form action="{{ route('suratmasuk.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DElETE')

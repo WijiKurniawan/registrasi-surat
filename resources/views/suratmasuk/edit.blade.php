@@ -21,33 +21,23 @@
                 @endif
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nomor surat</label>
-                    <input type="text" class="form-control" id="nomor-keluar" placeholder="" name="nomor_surat_masuk"
-                        required @if ($jabatan != 'ARSIPARIS') readonly @endif
-                        value="{{ $suratmasuk->nomor_surat_masuk }}">
+                    <input type="text" class="form-control" id="nomor_surat_masuk" name="nomor_surat_masuk" value="{{ $suratmasuk->nomor_surat_masuk }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Pengirim</label>
-                    <input type="text" class="form-control" id="penerima-keluar" placeholder="" required
-                        name="pengirim_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
-                        value="{{ $suratmasuk->pengirim_masuk }}">
+                    <input type="text" class="form-control" id="penerima-masuk" name="pengirim_masuk" value="{{ $suratmasuk->pengirim_masuk }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputtext1">Agenda</label>
-                    <input type="text" class="form-control" id="agenda-keluar" placeholder="" required
-                        name="agenda_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
-                        value="{{ $suratmasuk->agenda_masuk }}">
+                    <input type="text" class="form-control" id="agenda-masuk" name="agenda_masuk" value="{{ $suratmasuk->agenda_masuk }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputtext1">Perihal</label>
-                    <input type="text" class="form-control" id="perihal-keluar" placeholder="" required
-                        name="perihal_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
-                        value="{{ $suratmasuk->perihal_masuk }}">
+                    <input type="text" class="form-control" id="perihal-masuk" name="perihal_masuk" value="{{ $suratmasuk->perihal_masuk }}">
                 </div>
                 <div class="form-group" style="padding-right: 980px">
                     <label for="exampleInputtext1">Tanggal Surat</label>
-                    <input type="date" class="form-control" id="perihal-keluar" placeholder="" required
-                        name="tgl_surat_masuk" @if ($jabatan != 'ARSIPARIS') readonly @endif
-                        value="{{ $suratmasuk->tgl_surat_masuk }}">
+                    <input type="date" class="form-control" id="tgl-surat-masuk" name="tgl_surat_masuk" value="{{ $suratmasuk->tgl_surat_masuk }}">
                 </div>
                 @if ($jabatan == 'KASUB BAG. TATA USAHA')
                     <div class="form-check">
@@ -165,18 +155,26 @@
                         <input type="text" class="form-control" name="status" hidden value="Sudah Disposisi">
                     </div>
                 @endif
-                @if ($jabatan != 'KEPALA KSOP')
-                @if ($jabatan != 'KASUB BAG. TATA USAHA')
+                {{-- @if ($jabatan != 'ARSIPARIS')
+                @if ($jabatan != 'KEPALA KSOP') --}}
+                @if ($jabatan != 'KASUB BAG. TATA USAHA' && $jabatan != 'KEPALA KSOP' && $jabatan != 'ARSIPARIS')
                     <div class="form-group">
                         <label>Catatan Kasie/Kasub. Bag</label>
                         <textarea name="catatan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                     </div>
                 @endif
-                @endif
+                {{-- @endif
+                @endif --}}
                 <div class="d-flex justify-content-end">
+                    @if ($jabatan == 'ARSIPARIS')
+                    <button type="submit" class="btn btn-warning" style="width: 150px"><i
+                            class="fas fa-edit"></i>
+                        Edit Surat</button>
+                    @else
                     <button type="submit" class="btn btn-primary" style="width: 150px"><i
                             class="fas fa-share-square"></i>
                         Kirim Surat</button>
+                    @endif
                 </div>
             </form>
         </div>
