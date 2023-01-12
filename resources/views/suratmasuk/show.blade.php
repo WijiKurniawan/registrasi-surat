@@ -111,7 +111,7 @@
                     <a onClick="window.print()" class="btn btn-primary"
                         href="{{ asset('/dokumen/suratmasuk/' . $item->dokumen_masuk) }}" target="_blank"><i
                             class="fas fa-print"></i></a> --}}
-                    <button id="bt" onclick="print('{{ asset('/dokumen/suratmasuk/' . $item->dokumen_masuk) }}')" class="btn btn-primary"><i class="fas fa-print"></i></button>
+                    {{-- <button id="bt" onclick="print('{{ asset('/dokumen/suratmasuk/' . $item->dokumen_masuk) }}')" class="btn btn-primary"><i class="fas fa-print"></i></button> --}}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -133,12 +133,12 @@
     //     objFra.contentWindow.print();
     // }
 
-        function print(e) {
+    function print(e) {
         var objFra = document.createElement('iframe');
         objFra.style.visibility = 'hidden';
-        objFra.src = e;                  
+        objFra.src = e;
         document.body.appendChild(objFra);
-        objFra.contentWindow.focus();  
-        objFra.contentWindow.print();  
+        objFra.contentWindow.focus();
+        objFra.contentWindow.print();
     }
 </script>
