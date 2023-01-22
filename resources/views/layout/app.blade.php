@@ -48,7 +48,8 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <b><i class="fas fa-user-circle fa-lg"></i> {{ Auth::user()->nama }} <i class="fas fa-caret-down"></i> </b>
+                        <b><i class="fas fa-user-circle fa-lg"></i> {{ Auth::user()->nama }} <i
+                                class="fas fa-caret-down"></i> </b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="width: 200px">
                         <div class="text-center">
@@ -167,7 +168,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2022-2023 <a href="" class="text-decoration-none">KSOP</a>.</strong> All
+            <strong> <a href="" class="text-decoration-none">ARS</a>.</strong> All
             rights
             reserved.
         </footer>

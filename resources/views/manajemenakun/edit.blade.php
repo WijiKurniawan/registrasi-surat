@@ -25,7 +25,7 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="exampleInputEmail1">NIK</label>
+                    <label for="exampleInputEmail1">NIP</label>
                     <input type="text" class="form-control" id="nomor-keluar" value="{{ $user->nik }}" placeholder=""
                         name="nik" required>
                 </div>
@@ -56,6 +56,14 @@
                             @if ($user->jabatan == 'KASIE STATUS HUKUM KAPAL DAN SERTIFIKASI KAPAL') selected @endif>Kasie Status Hukum Kapal dan Sertifikasi Kapal
                         </option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputtext1">Kata Sandi</label>
+                    <input type="password" class="form-control" placeholder="" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputtext1">Konfirmasi Kata Sandi</label>
+                    <input type="password" class="form-control" placeholder="" name="password_confirm">
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary" style="width: 150px"><i class="fas fa-edit"></i> Edit

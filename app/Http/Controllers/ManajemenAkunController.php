@@ -96,11 +96,16 @@ class ManajemenAkunController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $request->validate([
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+        ]);
         $user = User::find($id);
         $user->nik = $request->nik;
         $user->nama = $request->nama;
         $user->email = $request->email;
         $user->jabatan = $request->jabatan;
+        $user->password = Hash::make($request->password);
         $user->save();
 
         return redirect()->route('manajemenakun');

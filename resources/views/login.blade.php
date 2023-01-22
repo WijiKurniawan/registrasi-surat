@@ -22,7 +22,8 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <h2 class="h2"><b>Login Aplikasi Registrasi Surat KSOP</b></h2>
+                <h2 class="h2"><b>Login ARS KSOP</b></h2>
+                <h3 class="h3">Aplikasi Registrasi Surat KSOP </h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('login/action') }}" method="post">
